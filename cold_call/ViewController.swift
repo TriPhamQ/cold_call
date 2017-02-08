@@ -11,18 +11,28 @@ import UIKit
 class ViewController: UIViewController {
     let nameBank = ["Connie", "Ellis", "Jeanne", "Gilbert", "Emanuel"]
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var numberLabel: UILabel!
     
     @IBAction func callButtonPressed(_ sender: UIButton) {
-        print(nameBank.count)
-        let ran = Int(arc4random_uniform(UInt32(nameBank.count)))
-        print(ran)
+        var ran = Int(arc4random_uniform(UInt32(nameBank.count)))
         nameLabel.text = nameBank[ran]
-        nameLabel.isHidden = false
+        ran = Int(arc4random_uniform(UInt32(nameBank.count))+1)
+        numberLabel.text = String(ran)
+        if ran == 5 {
+            numberLabel.textColor = UIColor.green
+        }
+        else if ran == 1 || ran == 2 {
+            numberLabel.textColor = UIColor.red
+        }
+        else {
+            numberLabel.textColor = UIColor.orange
+        }
+        numberLabel.isHidden = false
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameLabel.isHidden = true
+        numberLabel.isHidden = true
     }
 
     override func didReceiveMemoryWarning() {
