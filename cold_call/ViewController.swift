@@ -9,10 +9,20 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    let nameBank = ["Connie", "Ellis", "Jeanne", "Gilbert", "Emanuel"]
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    @IBAction func callButtonPressed(_ sender: UIButton) {
+        print(nameBank.count)
+        let ran = Int(arc4random_uniform(UInt32(nameBank.count)))
+        print(ran)
+        nameLabel.text = nameBank[ran]
+        nameLabel.isHidden = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        nameLabel.isHidden = true
     }
 
     override func didReceiveMemoryWarning() {
